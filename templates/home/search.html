@@ -1,0 +1,57 @@
+{% extends "layouts/layout.html" %}
+
+{% block header %}
+<div class="bg-gray-light border-bottom border-gray-light">
+  <div class="container text-center py-5 mb-4">
+    <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="w-100" style="max-width:120px;" />
+    <div class="mt-3 mb-4">
+      <h1 class="h1 mb-0">Book Our Plane</h1>
+   </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container text-center py-5 mb-4">
+     <form  action="" method="POST">
+         出发机场 <input type="text" name="出发机场"  />
+         <br>
+         <br>
+         到达机场 <input type="text" name="到达机场"  />
+         <br>
+         <br>
+         出发日期 <input type="text" name="出发日期"  />
+         <br>
+         <br>
+         到达日期 <input type="text" name="到达日期"  />
+         <br>
+         <br>
+         <input type="submit">
+     </form>
+</div>
+
+    <div class="container py-5 mb-4">
+     <table class="table table-striped">
+         <tr>
+              <th>航班编号</th>
+              <th>出发机场</th>
+              <th>到达机场</th>
+              <th>出发时间</th>
+              <th>到达时间</th>
+              <th>头等舱剩余座位</th>
+              <th>经济舱剩余座位</th>
+         </tr>
+         {% for flight in data %}
+         <tr>
+                <td>{{flight[0]}}</td>
+                <td>{{flight[2]}}</td>
+                <td>{{flight[3]}}</td>
+                <td>{{flight[5]}}</td>
+                <td>{{flight[7]}}</td>
+                <th>{{flight[8]}}</th>
+                <th>{{flight[9]}}</th>
+         </tr>
+         {% endfor %}
+     </table>
+</div>
+{% endblock %}

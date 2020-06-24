@@ -1,0 +1,48 @@
+{% extends "layouts/layout.html" %}
+
+{% block header %}
+<div class="bg-gray-light border-bottom border-gray-light">
+  <div class="container text-center py-5 mb-4">
+    <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="w-100" style="max-width:120px;" />
+    <div class="mt-3 mb-4">
+      <h1 class="h1 mb-0">Book Our Plane</h1>
+   </div>
+</div>
+
+ <div class="container text-center">
+     <form method="post"> <!-- or method="post" -->
+        <input type="submit" value="查询购票" >
+    </form>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container py-5 mb-4">
+     <table class="table table-striped">
+         <tr>
+              <th>航班编号</th>
+              <th>出发机场</th>
+              <th>到达机场</th>
+              <th>出发时间</th>
+              <th>到达时间</th>
+              <th>头等舱剩余座位</th>
+              <th>经济舱剩余座位</th>
+         </tr>
+         {% for flight in flightDetails %}
+         <tr>
+                <td>{{flight[0]}}</td>
+                <td>{{flight[2]}}</td>
+                <td>{{flight[3]}}</td>
+                <td>{{flight[5]}}</td>
+                <td>{{flight[7]}}</td>
+                <th>{{flight[8]}}</th>
+                <th>{{flight[9]}}</th>
+         </tr>
+         {% endfor %}
+     </table>
+</div>
+{% endblock %}
+
+
