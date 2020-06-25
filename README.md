@@ -7,7 +7,7 @@ This is an curriculum design for course "database system", aiming to build a sys
 
 ## UI
 
-## ![avatar](/UI.png)
+## ![avatar](/UI.PNG)
 
 ## Function
 - 登录，注册模块
