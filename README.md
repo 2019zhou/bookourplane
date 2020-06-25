@@ -7,6 +7,16 @@ This is an curriculum design for course "database system", aiming to build a sys
 
 ## UI
 
-
+## ![avatar](/UI.png)
 
 ## Function
+- 登录，注册模块
+- 查询机票模块
+- 购买机票模块
+- 退票模块
+- 
+## requirements
+- MySQLdb
+- flask_mysqldb
+- yaml
+- venv
