@@ -1,39 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-gray-dark text-white">
-  <div class="container">
-    <a class="text-white link-reset text-inherit pr-3" href="/">
-      Unithon Project
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Analyze News NOW!
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ url_for('users')}}">NOW!</a>
-          </div>
-        </li>
-        {% if g.user %}
-          <li class="nav-item p-2 pr-3">
-            <img src="{{ g.user['avatar_url'] }}" class='rounded mr-2' style='width:24px;height:24px;'/>
-            {{ g.user['username'] }}
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-inherit" href="{{ url_for('home.index') }}">Log out</a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link text-inherit" href="{{ url_for('home.index') }}">
-              Login with GitHub
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-
-    </div>
-  </div>
-</nav>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark" href="/" title="Home">Home</a>
+      {% if not g.user %}
+        <a class="p-2 text-dark" href="/login">登录</a>
+        <a class="p-2 text-dark" href="/register">注册</a>
+      {% else %}
+        <a class="p-2 text-dark" href="/dashboard">Dashboard</a>
+        <a class="p-2 text-dark" href="/logout">Logout</a>
+      {% endif %}
+    </nav>
+</div>

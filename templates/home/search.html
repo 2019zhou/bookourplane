@@ -8,29 +8,27 @@
       <h1 class="h1 mb-0">Book Our Plane</h1>
    </div>
 </div>
+</div>
 {% endblock %}
 
 
 {% block content %}
 <div class="container text-center py-5 mb-4">
      <form  action="" method="POST">
-         出发机场 <input type="text" name="出发机场"  />
+         出发城市 <input type="text" name="出发城市"  />
          <br>
          <br>
-         到达机场 <input type="text" name="到达机场"  />
+         到达城市 <input type="text" name="到达城市"  />
          <br>
          <br>
          出发日期 <input type="text" name="出发日期"  />
-         <br>
-         <br>
-         到达日期 <input type="text" name="到达日期"  />
          <br>
          <br>
          <input type="submit">
      </form>
 </div>
 
-    <div class="container py-5 mb-4">
+<div class="container py-5 mb-4">
      <table class="table table-striped">
          <tr>
               <th>航班编号</th>
@@ -39,17 +37,23 @@
               <th>出发时间</th>
               <th>到达时间</th>
               <th>头等舱剩余座位</th>
+              <th>头等舱票价</th>
               <th>经济舱剩余座位</th>
+              <th>经济舱票价</th>
+              <th> 购票</th>
          </tr>
          {% for flight in data %}
          <tr>
                 <td>{{flight[0]}}</td>
+                <td>{{flight[1]}}</td>
                 <td>{{flight[2]}}</td>
-                <td>{{flight[3]}}</td>
                 <td>{{flight[5]}}</td>
-                <td>{{flight[7]}}</td>
-                <th>{{flight[8]}}</th>
+                <td>{{flight[6]}}</td>
                 <th>{{flight[9]}}</th>
+                <th>{{flight[10]}}</th>
+                <th>{{flight[11]}}</th>
+                <th>{{flight[12]}}</th>
+                <th>未登录，不能购票</th>
          </tr>
          {% endfor %}
      </table>
