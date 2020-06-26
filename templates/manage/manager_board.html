@@ -1,0 +1,88 @@
+{% extends "layouts/layout.html" %}
+
+{% block header %}
+<div class="bg-gray-light border-bottom border-gray-light">
+    <div class="container text-center py-5 mb-4">
+        <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="w-100" style="max-width:120px;" />
+        <div class="mt-3 mb-4">
+          <h1 class="h1 mb-0">管理界面</h1>
+       </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container py-5 mb-4">
+     <table class="table table-striped">
+         <tr>
+              <th>航班编号</th>
+              <th>出发机场</th>
+              <th>到达机场</th>
+              <th>出发时间</th>
+              <th>到达时间</th>
+              <th>头等舱剩余座位</th>
+              <th>经济舱剩余座位</th>
+              <th>操作</th>
+         </tr>
+         {% for flight in flightDetails %}
+         <tr>
+                <td>{{flight[0]}}</td>
+                <td>{{flight[2]}}</td>
+                <td>{{flight[3]}}</td>
+                <td>{{flight[5]}}</td>
+                <td>{{flight[7]}}</td>
+                <th>{{flight[8]}}</th>
+                <th>{{flight[9]}}</th>
+             <th>
+                 <a href="/update_flight/{{flight[0]}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{flight[0]}}">修改</a>
+                 <a href="/delete_flight/{{flight[0]}}" class="btn btn-danger btn-xs" onclick="return confirm('确定删除')">删除</a>
+             </th>
+         </tr>
+
+         <div id="modaledit{{flight[0]}}" class="modal fade" role="dialog">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Update Information</h4>
+                     </div>
+                     <div class="modal-body">
+                        <form action="{{ url_for('update_flight') }}" method="POST">
+                           <div class="form-group">
+                              <label>出发机场:</label>
+                               <input type="hidden"  name="飞机编号" value="{{flight[0]}}">
+                              <input type="text" class="form-control" name="出发机场" value="{{flight[2]}}">
+                           </div>
+                           <div class="form-group">
+                              <label>到达机场</label>
+                              <input type="text" class="form-control" name="到达机场" value="{{flight[3]}}">
+                           </div>
+                           <div class="form-group">
+                              <label>出发时间</label>
+                              <input type="text" class="form-control" name="出发时间" value="{{flight[5]}}">
+                           </div>
+                            <div class="form-group">
+                              <label>到达时间</label>
+                              <input type="text" class="form-control" name="到达时间" value="{{flight[7]}}">
+                           <div class="form-group">
+                              <button class="btn btn-primary" type="submit">Update</button>
+                           </div>
+                            </div>
+                         </form>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         {% endfor %}
+     </table>
+</div>
+
+{% endblock %}
+
+
